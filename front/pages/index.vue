@@ -12,9 +12,12 @@ export default {
   components: {},
   async asyncData({ $axios }) {
     return await $axios
-      .get('/projects/myblog-f0a4b/databases/(default)/documents/posts')
+      .get('posts')
       .then((response) => {
         return { posts: response.data.fields }
+      })
+      .catch((error) => {
+        return { error: error.response }
       })
   },
 }

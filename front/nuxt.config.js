@@ -40,7 +40,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://firestore.googleapis.com/v1/',
+    baseURL:
+      'https://firestore.googleapis.com/v1/projects/myblog-f0a4b/databases/(default)/documents',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
