@@ -18,4 +18,9 @@ export const getters = {
   posts: (state) => {
     return state.postDatas
   },
+  getPostById: (state) => (postId) => {
+    return state.postDatas.find((post) => {
+      return postId === post.id
+    })
+  },
 }
