@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ post.created_at }}</h3>
+    <h3>{{ createdDate }}</h3>
     <h1>{{ post.title }}</h1>
     <div>{{ post.content }}</div>
   </div>
@@ -8,10 +8,20 @@
 
 <script>
 export default {
+  data() {
+    return {
+      post: {},
+    }
+  },
   computed: {
-    post() {
-      return this.$store.getters['posts/getPostById'](this.$route.params.id)
+    createdDate() {
+      return this.$moment
+        .unix(this.post.created_at.seconds)
+        .format('YYYY年MM月DD日 h:mm:ss')
     },
+  },
+  created() {
+    this.post = this.$store.getters['posts/getPostById'](this.$route.params.id)
   },
 }
 </script>
