@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase'
 
 import 'firebase/auth'
 import 'firebase/firestore'
@@ -16,6 +16,7 @@ const config = {
 // 二重の初期化を防ぐ
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
+  firebase.analytics()
 }
 
 // 他のファイルから使用できるようにする
