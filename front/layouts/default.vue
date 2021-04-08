@@ -51,3 +51,9 @@ export default {
   }),
 }
 </script>
+
+<style lang="scss">
+.v-sheet {
+  padding: 10px;
+}
+</style>

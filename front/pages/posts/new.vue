@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-form ref="form">
-      <v-text-field v-model="title"></v-text-field>
-      <v-text-field v-model="content"></v-text-field>
+      <v-text-field v-model="title" filled></v-text-field>
 
+      <v-textarea v-model="content" filled auto-grow></v-textarea>
       <v-btn @click="submit()">投稿</v-btn>
     </v-form>
   </div>
