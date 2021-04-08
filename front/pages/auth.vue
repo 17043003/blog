@@ -18,7 +18,11 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then((result) => {
-          alert(result)
+          this.$store.dispatch(
+            'auth/setTokenAction',
+            result.credential.accessToken
+          )
+          alert(result.credential.accessToken)
         })
         .catch((error) => {
           // Handle Errors here.
