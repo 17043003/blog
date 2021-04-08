@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
+
 export default {
   middleware: 'authenticated',
   data() {
@@ -20,7 +22,27 @@ export default {
   },
   methods: {
     submit() {
+      this.addPost()
+
       return true
+    },
+    addPost() {
+      const db = firebase.firestore()
+      const postsRef = db.collection('posts')
+
+      postsRef
+        .add({
+          title: this.title,
+          content: this.content,
+          created_at: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then((result) => {
+          this.$router.push(`/${result.path}`)
+          //   return result.path
+        })
+        .catch((error) => {
+          alert(error)
+        })
     },
   },
 }

@@ -12,6 +12,21 @@ export const actions = {
   init: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('postDatas', postsRef)
   }),
+
+  add: firestoreAction((context, { title, content }) => {
+    postsRef
+      .add({
+        title,
+        content,
+        created_at: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then((result) => {
+        alert(result.path)
+      })
+      .catch((error) => {
+        alert(error)
+      })
+  }),
 }
 
 export const getters = {
