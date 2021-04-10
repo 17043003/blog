@@ -2,6 +2,7 @@ import firebase from 'firebase'
 
 import 'firebase/auth'
 import 'firebase/firestore'
+// import 'firebase/analytics'
 
 const config = {
   apiKey: 'AIzaSyBhrBiqZzHJ5JP9IpJ7c9wmUMZGkZLrM_s',
@@ -16,7 +17,7 @@ const config = {
 // 二重の初期化を防ぐ
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
-  firebase.analytics()
+  // firebase.analytics()
 }
 
 // 他のファイルから使用できるようにする

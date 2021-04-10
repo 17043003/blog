@@ -37,8 +37,8 @@ export default {
           created_at: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then((result) => {
-          this.$router.push(`/${result.path}`)
-          //   return result.path
+          this.$router.push(`/posts`)
+          alert(`${result.id}を追加`)
         })
         .catch((error) => {
           alert(error)
