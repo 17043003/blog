@@ -2,7 +2,7 @@
   <div>
     <h3>{{ createdDate }}</h3>
     <h1>{{ post.title }}</h1>
-    <div>{{ post.content }}</div>
+    <div class="content">{{ post.content }}</div>
   </div>
 </template>
 
@@ -25,3 +25,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.content {
+  white-space: pre-wrap;
+}
+</style>
