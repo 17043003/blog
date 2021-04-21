@@ -2,11 +2,13 @@
   <div>
     <h3>{{ createdDate }}</h3>
     <h1>{{ post.title }}</h1>
-    <div class="content">{{ post.content }}</div>
+    <div class="content" v-html="compiledMarkdown"></div>
   </div>
 </template>
 
 <script>
+import marked from 'marked'
+
 export default {
   data() {
     return {
@@ -18,6 +20,9 @@ export default {
       return this.$moment
         .unix(this.post.created_at.seconds)
         .format('YYYY年MM月DD日 h:mm:ss')
+    },
+    compiledMarkdown() {
+      return marked(this.post.content, { sanitize: true })
     },
   },
   created() {
