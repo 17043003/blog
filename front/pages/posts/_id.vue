@@ -2,12 +2,13 @@
   <div>
     <h3>{{ createdDate }}</h3>
     <h1>{{ post.title }}</h1>
-    <div class="content" v-html="compiledMarkdown"></div>
+    <div class="content markdown-body" v-html="compiledMarkdown"></div>
   </div>
 </template>
 
 <script>
 import marked from 'marked'
+import 'github-markdown-css'
 
 export default {
   data() {
