@@ -3,7 +3,14 @@
     <v-form ref="form">
       <v-text-field v-model="title" filled></v-text-field>
 
-      <v-textarea v-model="content" filled auto-grow></v-textarea>
+      <v-row>
+        <v-col>
+          <v-textarea v-model="content" filled auto-grow></v-textarea>
+        </v-col>
+        <v-col>
+          <MarkDown :content="content"></MarkDown>
+        </v-col>
+      </v-row>
       <v-btn @click="submit()">投稿</v-btn>
     </v-form>
   </div>
@@ -13,6 +20,7 @@
 import firebase from '~/plugins/firebase'
 
 export default {
+  layout: 'postEdit',
   middleware: 'authenticated',
   data() {
     return {
