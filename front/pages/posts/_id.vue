@@ -2,7 +2,7 @@
   <div>
     <h3>{{ createdDate }}</h3>
     <h1>{{ post.title }}</h1>
-    <div class="content">{{ post.content }}</div>
+    <MarkDown :content="post.content"></MarkDown>
   </div>
 </template>
 
