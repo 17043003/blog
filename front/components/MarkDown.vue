@@ -4,7 +4,8 @@
 
 <script>
 import marked from 'marked'
-import 'github-markdown-css'
+import '~/assets/github-markdown.css'
+
 export default {
   props: {
     content: {
