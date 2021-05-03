@@ -22,7 +22,7 @@ export default {
             'auth/setTokenAction',
             result.credential.accessToken
           )
-          alert(result.credential.accessToken)
+          alert(`ログインしました`)
         })
         .catch((error) => {
           // Handle Errors here.
@@ -34,6 +34,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
+          this.$store.dispatch('auth/setTokenAction', '')
           alert('signout succeeded')
         })
         .catch((error) => {

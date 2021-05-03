@@ -7,7 +7,7 @@
       ></v-avatar>
 
       <v-tabs centered class="ml-n9" color="grey darken-1">
-        <v-tab v-for="(link, key) in links" :key="link" nuxt :to="link">
+        <v-tab v-for="(link, key) in loggedInLinks" :key="link" nuxt :to="link">
           {{ key }}
         </v-tab>
       </v-tabs>
@@ -49,6 +49,18 @@ export default {
       updates: '/updates',
     },
   }),
+  computed: {
+    loggedInLinks() {
+      if (this.$store.getters['auth/token']) {
+        return {
+          ...this.links,
+          new: '/posts/new',
+        }
+      } else {
+        return this.links
+      }
+    },
+  },
 }
 </script>
 
