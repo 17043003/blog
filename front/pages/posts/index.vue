@@ -1,11 +1,15 @@
 <template>
   <div>
-    <div v-for="post in posts" :key="post.id">
-      <v-card class="post-card" append nuxt :to="post.id" elevation="2">
-        <v-card-title>{{ post.title }}</v-card-title>
-        <v-card-text>{{ post.content | omittedText }}</v-card-text>
-      </v-card>
-    </div>
+    <v-container>
+      <v-row>
+        <v-col v-for="post in posts" :key="post.id" cols="12" sm="6">
+          <v-card class="post-card" append nuxt :to="post.id" elevation="2">
+            <v-card-title>{{ post.title }}</v-card-title>
+            <v-card-text>{{ post.content | omittedText }}</v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
