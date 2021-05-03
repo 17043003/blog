@@ -18,6 +18,7 @@
     "firebase": "^8.3.2",
     "marked": "^2.0.3",
     "nuxt": "^2.15.3",
+    "nuxt-svg-loader": "^1.2.0",
     "save": "^2.4.0",
     "vuexfire": "^3.2.0-alpha.0"
   },
