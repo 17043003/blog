@@ -6,7 +6,7 @@
         size="32"
       ></v-avatar>
 
-      <v-tabs centered class="ml-n9" color="grey darken-1">
+      <v-tabs v-if="!isMobile" centered class="ml-n9" color="grey darken-1">
         <v-tab v-for="(link, key) in loggedInLinks" :key="link" nuxt :to="link">
           {{ key }}
         </v-tab>
@@ -28,7 +28,7 @@
             </v-sheet>
           </v-col>
 
-          <v-col cols="12" sm="2">
+          <v-col v-if="!isMobile" cols="2">
             <v-sheet rounded="lg" min-height="268">
               <!--  -->
             </v-sheet>
@@ -58,6 +58,14 @@ export default {
         }
       } else {
         return this.links
+      }
+    },
+    isMobile() {
+      const mobileBreakPoint = 600
+      if (this.$vuetify.breakpoint.width < mobileBreakPoint) {
+        return true
+      } else {
+        return false
       }
     },
   },
