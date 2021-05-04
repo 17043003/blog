@@ -17,4 +17,18 @@ function updatePost(postId, post) {
   }
 }
 
-export { updatePost }
+function deletePost(postId) {
+  const db = firebase.firestore()
+  const documentRef = db.collection('posts').doc(postId)
+
+  documentRef
+    .delete()
+    .then(() => {
+      alert(`${postId}の削除に成功しました`)
+    })
+    .catch((error) => {
+      alert(`削除に失敗しました \n Error: ${error}`)
+    })
+}
+
+export { updatePost, deletePost }

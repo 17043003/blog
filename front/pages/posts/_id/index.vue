@@ -3,12 +3,15 @@
     <h3 class="create-date date">作成日：{{ createdDate }}</h3>
     <h3 class="update-date date">更新日：{{ updatedDate }}</h3>
     <nuxt-link v-if="isLoggedIn" nuxt append to="edit">編集</nuxt-link>
+    <button @click="pushDeleteButton()">削除</button>
     <h1>{{ post.title }}</h1>
     <MarkDown :content="post.content"></MarkDown>
   </div>
 </template>
 
 <script>
+import { deletePost } from '@/plugins/post'
+
 export default {
   data() {
     return {
@@ -40,6 +43,15 @@ export default {
   },
   created() {
     this.post = this.$store.getters['posts/getPostById'](this.$route.params.id)
+  },
+  methods: {
+    pushDeleteButton() {
+      if (!confirm(`記事を削除します\n よろしいですか？`)) return
+
+      const postId = this.$route.params.id
+      deletePost(postId)
+      this.$router.push(`/posts`)
+    },
   },
 }
 </script>
