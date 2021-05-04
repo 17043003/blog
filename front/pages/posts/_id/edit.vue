@@ -2,7 +2,7 @@
   <div>
     <h1>編集</h1>
     <v-form ref="form">
-      <v-text-field v-model="post.title" filled></v-text-field>
+      <v-text-field v-model="title" filled></v-text-field>
 
       <v-row>
         <v-col>
@@ -43,13 +43,8 @@ export default {
       this.post.title = this.title
       this.post.content = this.content
 
-      const result = updatePost(this.postId, this.post)
-      if (result) {
-        this.$router.push(`/posts`)
-        alert(`${this.post.title}を追加`)
-      } else {
-        alert('error!')
-      }
+      updatePost(this.postId, this.post)
+      this.$router.push(`/posts`)
     },
   },
 }

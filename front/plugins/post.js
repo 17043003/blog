@@ -6,14 +6,20 @@ function updatePost(postId, post) {
 
   if (post) {
     const documentRef = postsRef.doc(postId)
-    documentRef.update({
-      title: post.title,
-      content: post.content,
-      updated_at: firebase.firestore.FieldValue.serverTimestamp(),
-    })
-    return true
+    documentRef
+      .update({
+        title: post.title,
+        content: post.content,
+        updated_at: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+        alert(`${post.title}を更新しました`)
+      })
+      .catch((error) => {
+        alert(`更新に失敗しました \n Error: ${error}`)
+      })
   } else {
-    return false
+    alert('記事が存在しません')
   }
 }
 
