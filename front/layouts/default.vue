@@ -6,10 +6,24 @@
           {{ key }}
         </v-tab>
       </v-tabs>
-      <div v-else>
-        <MenuSvg />
-      </div>
+      <v-app-bar-nav-icon
+        v-else
+        @click="isMenuDrawn = true"
+      ></v-app-bar-nav-icon>
     </v-app-bar>
+    <v-navigation-drawer v-model="isMenuDrawn" fixed temporary clipped>
+      <v-list nav dense>
+        <v-list-item-group>
+          <v-list-item
+            v-for="(link, key) in loggedInLinks"
+            :key="key"
+            :to="link"
+          >
+            <v-list-item-title>{{ key }}</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
 
     <v-main class="grey lighten-3">
       <v-container>
@@ -20,7 +34,7 @@
             </v-sheet>
           </v-col>
 
-          <v-col v-if="!isMobile" cols="2">
+          <v-col v-if="!isMobile" sm="2">
             <v-sheet rounded="lg" min-height="268">
               <!--  -->
             </v-sheet>
@@ -32,12 +46,7 @@
 </template>
 
 <script>
-import MenuSvg from '@/assets/format_list_bulleted_black_24dp.svg'
-
 export default {
-  components: {
-    MenuSvg,
-  },
   data: () => ({
     links: {
       top: '/',
@@ -45,6 +54,7 @@ export default {
       profile: '/profile',
       updates: '/updates',
     },
+    isMenuDrawn: false,
   }),
   computed: {
     loggedInLinks() {
@@ -68,9 +78,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.v-sheet {
-  padding: 10px;
-}
-</style>
